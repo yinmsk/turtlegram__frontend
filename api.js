@@ -73,4 +73,10 @@ async function getName() {
         }
     }
     )
+    response_json = await response.json()
+
+    // $(#username)과 비슷하다 document는 html이라는 뜻이다
+    const username = document.getElementById("username")
+    username.innerText = response_json.email
+
 }
