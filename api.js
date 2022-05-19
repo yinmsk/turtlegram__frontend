@@ -1,5 +1,5 @@
 const backend_base_url = "http://127.0.0.1:5000"
-const frontend_base_url = "http://127.0.0.1:5501"
+const frontend_base_url = "http://127.0.0.1:5500"
 
 
 // 비동기 함수라는걸 알려주기 위해 async를 사용
@@ -76,6 +76,48 @@ async function getName() {
 
     // $(#username)과 비슷하다 document는 html이라는 뜻이다
     const username = document.getElementById("username")
+    console.log("email" + response_json.email)
     username.innerText = response_json.email
+
+}
+
+
+async function postArticle(title, content) {
+
+    const articleData = {
+        title: title,
+        content: content,
+    }
+    console.log(articleData)
+
+    const response = await fetch(`${backend_base_url}/article`, {
+        method: 'POST',
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        },
+        body: JSON.stringify(articleData)
+    }
+    )
+
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/login.html`);
+    } else {
+        alert(response.status)
+    }
+}
+
+
+async function getArticles() {
+    const response = await fetch(`${backend_base_url}/article`, {
+        method: 'GET',
+    }
+    )
+
+    response_json = await response.json()
+    console.log(response_json)
+    // return response_json.articles
 
 }
