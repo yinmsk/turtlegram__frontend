@@ -24,7 +24,7 @@ async function handleSignin() {
     console.log(response_json)
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/login.html`);
+        window.location.replace(`${frontend_base_url}/frontend/login.html`);
     }
     else {
         alert(response.status)
@@ -56,8 +56,7 @@ async function handle_login() {
     // console.log(response_json.message)
 
     if (response_json.message == "success") {
-        console.log("ak")
-        window.location.replace(`${frontend_base_url}/index.html`);
+        window.location.replace(`${frontend_base_url}/frontend/article_create.html`);
 
     }
 
@@ -112,7 +111,7 @@ async function postArticle(title, content) {
     console.log(response_json)
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/index.html`);
+        window.location.replace(`${frontend_base_url}/frontend/index.html`);
     } else {
         alert(response.status)
     }
@@ -127,12 +126,11 @@ async function getArticles() {
 
     response_json = await response.json()
     console.log(response_json)
-    return response_json.articles
+    // return response_json.articles
 
 }
 
-
 function logout() {
     localStorage.removeItem("token")
-    window.location.replace(`${frontend_base_url}/login.html`);
+    window.location.replace(`${frontend_base_url}/frontend/login.html`);
 }
