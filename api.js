@@ -76,7 +76,7 @@ async function getName() {
 
     // $(#username)과 비슷하다 document는 html이라는 뜻이다
     const username = document.getElementById("username")
-    console.log("email" + response_json.email)
+    // console.log("email" + response_json.email)
     username.innerText = response_json.email
 
 }
@@ -103,7 +103,7 @@ async function postArticle(title, content) {
     console.log(response_json)
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/login.html`);
+        window.location.replace(`${frontend_base_url}/index.html`);
     } else {
         alert(response.status)
     }
@@ -118,6 +118,6 @@ async function getArticles() {
 
     response_json = await response.json()
     console.log(response_json)
-    // return response_json.articles
+    return response_json.articles
 
 }
