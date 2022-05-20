@@ -72,7 +72,7 @@ async function getName() {
         }
     }
     )
-    response_json = await response.json()
+    // response_json = await response.json()
 
     if (response.status == 200) {
         response_json = await response.json()
@@ -125,8 +125,8 @@ async function getArticles() {
     )
 
     response_json = await response.json()
-    console.log(response_json)
-    // return response_json.articles
+    console.log(response_json.article)
+    return response_json.article
 
 }
 
